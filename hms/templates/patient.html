@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+
+{% block title %}
+     patient booking
+{% endblock title %}
+
+{% block body %}
+<div class="container">
+<div class="row">
+
+          
+<br>
+          <div class="col-md-5">
+                            <br>
+                            <h4 class="text-center bg-info text-white">Book Your Slot</h4>
+                                <br>
+
+
+                                {% with messages=get_flashed_messages(with_categories=true) %}
+                                {% if messages %}
+                                {% for category, message in messages %}
+
+                                <div class="alert alert-{{category}} alert-dismissible fade show" role="alert">
+                                    {{message}}
+
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+
+
+                                  {% endfor %}
+                                  {% endif %}
+                                  {% endwith %}
+
+
+                            <form action="/patients" method="post" class="jumbotron">
+
+                            
+
+                                <div class="form-group">
+
+                                  <input type="email" class="form-control" id="email" value={{current_user.email}} name="email" required>
+                                
+                                </div>
+
+                                <div class="form-group">
+                                
+                                  <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+                                
+                                </div>
+
+                                <div class="form-group">
+
+                                            
+                                                                      
+                                <select class="form-control" id="gender" name="gender"  required>
+                                        <option selected>Gender</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                        <option value="Others">Others</option>
+                                
+                                      </select>
+                                </div>
+
+                                <div class="form-group">
+
+                                            
+                                                                      
+                                <select class="form-control" id="slot" name="slot"  required>
+                                        <option selected>Slot</option>
+                                        <option value="morning">Morning</option>
+                                        <option value="evening">Evening</option>
+                                        <option value="night">Night</option>
+                                
+                                      </select>
+                                </div>
+
+                                <div class="form-group">
+                                  
+                                  <input type="time" class="form-control" name="time" placeholder="Time" required>
+                                
+                                </div>
+                                <div class="form-group">
+                                  
+                                  <input type="date" class="form-control" name="date" placeholder="date" required>
+                                
+                                </div>
+                                <div class="form-group">
+                                  
+                                  <input type="text" class="form-control" id="disease" name="disease" placeholder="Disease" required>
+                                
+                                </div>
+
+                                <div class="form-group">
+
+                                            
+                                                                      
+                                <select class="form-control" id="dept" name="dept"  required>
+                                        <option selected>Select Doctor Department</option>
+                                        {% for d in doct  %}
+                                        <option value="{{d.dept}}">{{d.dept}}</option>
+                                        {% endfor %}
+                                      </select>
+                                </div>
+
+                                <div class="form-group">
+
+                                  <input type="number" class="form-control" id="number" name="number" placeholder="Phone Number" required>
+                                
+                                </div>
+
+                              
+                              <button type="submit" class="btn btn-success btn-sm btn-block">Book</button>
+                            </form>
+          </div>
+
+
+          <div class="col-md-5 mt-3">
+            <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="static/images/doc.jpg" alt="Card image cap">
+                    <div class="card-body">
+                      <h5 class="card-title">Medical Procedures</h5>
+                      
+                    </div>
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item">Proton Therapy For Cancer Treatment</li>
+                          <li class="list-group-item">Cosmetic And Plastic Surgery</li>
+                          <li class="list-group-item">Bone Marrow Transplant</li>
+                          <li class="list-group-item">Hand MicroSurgery</li>
+                          <li class="list-group-item">G Scan – Open Standing MRI Scan</li>
+                          <li class="list-group-item">Hip Arthroscopy</li>
+                          <li class="list-group-item">Minimally Invasive Cardiac Surgery</li>
+                          <li class="list-group-item">Knee Replacement Surgery</li>
+                        </ul>
+                        <div class="card-body">
+                          <a href="#" class="card-link">Contact Us</a>
+
+                          <a href="#" class="card-link">About US</a>
+                        </div>
+            </div>
+
+      </div>
+
+
+
+
+
+
+        </div>
+
+</div>
+     
+     
+{% endblock body %}

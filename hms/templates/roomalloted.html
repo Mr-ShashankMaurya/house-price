@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+     Alloted Rooms
+{% endblock title %}
+
+{% block body %}
+
+<table class="table">
+     <thead class="thead-light">
+       <tr>
+         <th scope="col">RID</th>
+         <th scope="col">EMAIL</th>
+         <th scope="col">NAME</th>
+         <th scope="col">ROOM NO.</th>
+        
+         
+       </tr>
+     </thead>
+     
+    
+     <tbody>
+      {% for post in query %}
+       <tr>
+         <th scope="row">{{post.rid}}</th>
+         <td>{{post.email}}</td>
+         <td>{{post.doctorpatientname}}</td>
+         <td>{{post.roomno}}</td>
+         
+       </tr>
+      {% endfor %} 
+
+      
+     </tbody>
+   </table>
+     
+{% endblock body %}
